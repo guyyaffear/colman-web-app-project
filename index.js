@@ -5,9 +5,12 @@ const dotenv = require("dotenv");
 dotenv.config();
 // Mongo DB conncetion
 const database = process.env.MONGOLAB_URI;
-mongoose.connect(database, {useUnifiedTopology: true, useNewUrlParser: true })
-.then(() => console.log('e done connect'))
-.catch(err => console.log(err));
+mongoose.connect('mongodb://localhost:27017/farmStand', { useNewUrlParser: true })
+    .then(() => {
+        console.log("mongo connection open!!");
+    }).catch(err => {
+        console.log("no connection start");
+    })
 
 app.set('view engine', 'ejs');
 //Routes
