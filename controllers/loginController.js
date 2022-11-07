@@ -10,7 +10,7 @@ const registerUser = (req, res) => {
     }
     //Confirm Passwords
     if (password !== confirm) {
-      console.log("Password must match");
+      console.log("Incorrect Password");
     } else {
       //Validation
       User.findOne({ email: email }).then((user) => {
