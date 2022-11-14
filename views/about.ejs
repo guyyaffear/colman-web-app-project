@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+
+<body>
+  <div class="container-fluid overflow-hidden text-center bg-secondary min-fit">
+    <div class="row">
+      <div class="col-12">
+      </div>
+    </div>
+    <div class="row gy-5 mt-3">
+      <div class="col-2"></div>
+      <div class="col-8">
+      </div>
+      <div class="col-2"></div>
+      <div class="col-12 container-fluid">
+        <div class="p-3 card bg-dark text-dark flex-grow">
+          <div class="container-fluid text-center">
+            <div class="m-auto col-lg-3 col-md-6 col-12 mb-5">
+              <div class="text-light mt-2 mb-2">
+              </div>
+              <div class="text-light mt-2 mb-2">
+              </div>
+              <div class="text-light mt-2 mb-2">
+              </div>
+            </div>
+            <div id="map" class="m-auto map-min-ratio col-11 col-md-9 col-lg-8"></div>
+          </div>
+        </div>
+      </div>
+      <div></div>
+    </div>
+  </div>
+    <script src="https://maps.googleapis.com/maps/api/js?key=<%=googleKey%>&callback=mapInitiator" async defer></script>
+</body>
+
+</html>
