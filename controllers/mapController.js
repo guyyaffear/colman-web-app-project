@@ -9,7 +9,6 @@ exports.addressById = (req, res, next, id) => {
       });
     }
     const id = map.id;
-    console.log(id);
     req.map = map;
     next();
   });
@@ -20,7 +19,6 @@ exports.read = (req, res) => {
 };
 
 exports.create = (req, res) => {
-  console.log("create map with req: ", req.body);
   const map = Map(req.body);
   map.save((err, data) => {
     if (err) {
