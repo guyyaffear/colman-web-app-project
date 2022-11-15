@@ -5,9 +5,11 @@ const dotenv = require("dotenv");
 dotenv.config();
 // Mongo DB conncetion
 const database = process.env.MONGOLAB_URI;
-mongoose.connect('mongodb://localhost:27017/farmStand', { useNewUrlParser: true })
+mongoose.connect('mongodb://localhost:27017', {
+    useNewUrlParser: true
+})
     .then(() => {
-        console.log("mongo connection open!!");
+        console.log("database is ready..");
     }).catch(err => {
         console.log("no connection start");
     })
@@ -15,6 +17,6 @@ mongoose.connect('mongodb://localhost:27017/farmStand', { useNewUrlParser: true 
 app.set('view engine', 'ejs');
 //Routes
 app.use('/', require('./routes/login'));
-app.use(express.urlencoded({extended: false}));
+app.use(express.urlencoded({ extended: false }));
 const PORT = process.env.PORT || 4111;
 app.listen(PORT, console.log("Server has started at port " + PORT))
