@@ -5,18 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6687aaa8-c10c-4135-83b5-b3989324811b" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/public/css/header.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/css/loginPage.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/css/main.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/errorPage.ejs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/layout/footer.ejs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/layout/head.ejs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/layout/header.ejs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/layout/mainContent.ejs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/layout/overlay.ejs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/userController.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/userController.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/login.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/login.ejs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/login.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/login.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/register.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/register.ejs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -78,7 +73,7 @@
       <updated>1668584914056</updated>
       <workItem from="1668584915863" duration="5624000" />
       <workItem from="1668606411032" duration="2432000" />
-      <workItem from="1668608900281" duration="4734000" />
+      <workItem from="1668608900281" duration="5667000" />
     </task>
     <servers />
   </component>

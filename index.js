@@ -33,13 +33,13 @@ app.get("/", (req, res) => {
     res.render("login");
 });
 
-app.get("/error", (req, res) => {
-    res.render("errorPage");
-});
+// app.get("/error", (req, res) => {
+//     res.render("errorPage");
+// });
 
-app.use("*", (req, res) => {
-  res.redirect("/error?code=404");
-});
+// app.use("*", (req, res) => {
+//   res.redirect("/error?code=404");
+// });
 
 const httpServer = require("http").createServer(app);
 const { Server } = require("socket.io");

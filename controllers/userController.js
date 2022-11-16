@@ -33,6 +33,11 @@ const login = async (req, res) => {
 const register = async (req, res) => {
     const { email, password, firstName, lastName, gender, age, isAdmin } =
         req.body;
+    if (!email || !password || !firstName || !lastName || !gender || !age )
+    {
+        res.render("register.ejs",{});
+
+    }
 
     try {
         const register = await userHelper.registerUser(
