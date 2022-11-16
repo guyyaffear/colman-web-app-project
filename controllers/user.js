@@ -12,10 +12,12 @@ function isAdmin(req, res, next) {
 
 async function login(req, res) {
   const { email, password } = req.body;
-
   try {
+    if(!email || !password){
+      res.render("login.ejs",{});
+    }
     const user = await userService.login(email, password);
-
+    console.log("user",user)
     if (user) {
       req.session.username = email;
       req.session.isAdmin = user.isAdmin;
