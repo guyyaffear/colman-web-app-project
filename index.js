@@ -30,7 +30,7 @@ app.use(function (req, res, next) {
 app.use("/user", require("./routes/login"));
 
 app.get("/", (req, res) => {
-    res.render("index");
+    res.render("login");
 });
 
 app.get("/error", (req, res) => {
