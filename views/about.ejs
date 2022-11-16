@@ -5,17 +5,23 @@
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <%- include('./layout/head')%>
+    <link rel="stylesheet" href="../public/css/main.css" />
+    <script src="../public/js/map.js"></script>
+
 </head>
 
 <body>
   <div class="container-fluid overflow-hidden text-center bg-secondary min-fit">
     <div class="row">
       <div class="col-12">
+        <%- include('./layout/header'); %>
       </div>
     </div>
     <div class="row gy-5 mt-3">
       <div class="col-2"></div>
       <div class="col-8">
+        <h2>Where can you find us...</h2>
       </div>
       <div class="col-2"></div>
       <div class="col-12 container-fluid">
@@ -23,10 +29,14 @@
           <div class="container-fluid text-center">
             <div class="m-auto col-lg-3 col-md-6 col-12 mb-5">
               <div class="text-light mt-2 mb-2">
+                We are located in the center of NYC!
               </div>
               <div class="text-light mt-2 mb-2">
+                Get texi is working with us so you will get a discount coming
+                to us.
               </div>
               <div class="text-light mt-2 mb-2">
+                the adress is 7th/45th street.
               </div>
             </div>
             <div id="map" class="m-auto map-min-ratio col-11 col-md-9 col-lg-8"></div>
@@ -36,6 +46,8 @@
       <div></div>
     </div>
   </div>
+  <%- include('./layout/footer'); %>
+
     <script src="https://maps.googleapis.com/maps/api/js?key=<%=googleKey%>&callback=mapInitiator" async defer></script>
 </body>
 
