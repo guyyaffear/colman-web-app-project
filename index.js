@@ -26,7 +26,7 @@ app.use(function (req, res, next) {
     next();
 });
 
-
+app.use("/home", require("./routes/home"));
 app.use("/user", require("./routes/login"));
 
 app.get("/", (req, res) => {

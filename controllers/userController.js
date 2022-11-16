@@ -36,7 +36,6 @@ const register = async (req, res) => {
     if (!email || !password || !firstName || !lastName || !gender || !age )
     {
         res.render("register.ejs",{});
-
     }
 
     try {

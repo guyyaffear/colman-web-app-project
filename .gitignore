@@ -2,3 +2,6 @@
 .DS_Store
 node_modules/
 logs/
+node_modules
+package-lock.json
+.idea
