@@ -1,4 +1,4 @@
-const userService = require("../helpers/userHelper");
+const userHelper = require("../helpers/userHelper");
 
 function isLoggedIn(req, res, next) {
     req.session.username ? next() : res.redirect("/error?code=401");
@@ -16,7 +16,7 @@ const login = async (req, res) => {
         if(!email || !password){
             res.render("login.ejs",{});
         }
-        const user = await userService.login(email, password);
+        const user = await userHelper.login(email, password);
         console.log("user",user)
         if (user) {
             req.session.username = email;
@@ -35,7 +35,7 @@ const register = async (req, res) => {
         req.body;
 
     try {
-        const register = await userService.registerUser(
+        const register = await userHelper.registerUser(
             email,
             password,
             firstName,
@@ -65,21 +65,21 @@ const logout = async (req, res) => {
     res.redirect("/");
 }
 
-const getUser = (req, res) => {
+const getUser = async (req, res) => {
     const username = req.session.username;
     if (username) {
-        const user = await userService.getUser(username);
+        const user = await userHelper.getUser(username);
         res.render("addUser", { user });
     } else {
         res.redirect("/user/add-user");
     }
 }
 
-const updateUser = (req, res) => {
+const updateUser = async (req, res) => {
     const username = req.session.username;
     const { password, firstName, lastName, gender, age } = req.body;
     if (username) {
-        const user = await userService.updateUser(
+        const user = await userHelper.updateUser(
             username,
             password,
             firstName,
