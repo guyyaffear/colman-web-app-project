@@ -1,5 +1,15 @@
 var menuHolder = document.getElementById('menuHolder')
 var siteBrand = document.getElementById('siteBrand')
+var loginButton = document.getElementById('loginNavButton')
+var registerButton = document.getElementById('registerNavButton')
+
+const onClickLoginButton = () => {
+    location.href = '/user/login'
+}
+const onClickRegisterButton = () => {
+    location.href = '/user/register'
+}
+
 function menuToggle(){
   if(menuHolder.className === "drawMenu") menuHolder.className = ""
   else menuHolder.className = "drawMenu"

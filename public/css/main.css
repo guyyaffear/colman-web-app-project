@@ -8,6 +8,14 @@ body{
     background-repeat: no-repeat;
     background-position: top;
 }
+#registerButton { 
+  min-width: 300px !important;
+  margin: 0;
+  padding: 0;
+  width: 200px;
+  border: 0px solid;
+  color: white;
+}
 .box{
   width: 400px;
   padding: 40px;
@@ -60,9 +68,7 @@ body{
 .box input[type = "text"]:focus,.box input[type = "password"]:focus{
   width: 280px;
    -webkit-animation: 9s colorChange alternate;
-  transition height 0.3s, width 0.3s 0.1s
-  input:focus ~ .border
-  
+  transition: height 0.3s, width 0.3s 0.1s;
 }
 .box input[type = "submit"]{
   border:0;

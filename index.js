@@ -29,10 +29,6 @@ app.use(function (req, res, next) {
 app.use("/home", require("./routes/home"));
 app.use("/user", require("./routes/login"));
 
-app.get("/", (req, res) => {
-    res.render("login");
-});
-
 // app.get("/error", (req, res) => {
 //     res.render("errorPage");
 // });

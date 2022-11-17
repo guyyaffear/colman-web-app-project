@@ -1,61 +1,61 @@
-<%- include('layout.ejs'); %>
-<div class="container">
-<div class="row justify-content-center">
-                    <div class="col-md-8">
-                        <h2>NODE.JS MVC</h2>
-                        <div class="card">
-                            <div class="card-header">Register</div>
-                            <div class="card-body">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <%- include('./layout/head')%>
+    <link rel="stylesheet" href="../public/css/register.css" />
+</head>
+<%- include('./layout/header') %>
+<body>
+<div class="form-body">
+    <div class="row">
+        <div class="form-holder">
+            <div class="form-content">
+                <div class="form-items">
+                    <h3>Register Today</h3>
+                    <p>Fill in the data below.</p>
+                    <form  id="form" action="/">
 
-                                <form class="form-horizontal" method="post" action="/register">
-
-                                    <div class="form-group">
-                                        <label for="name" class="cols-sm-2 control-label">Your Name</label>
-                                        <div class="cols-sm-10">
-                                            <div class="input-group">
-                                                <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-                                                <input type="text" class="form-control" name="name" id="name" placeholder="Enter your Name" />
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="email" class="cols-sm-2 control-label">Your Email</label>
-                                        <div class="cols-sm-10">
-                                            <div class="input-group">
-                                                <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
-                                                <input type="text" class="form-control" name="email" id="email" placeholder="Enter your Email" />
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label for="password" class="cols-sm-2 control-label">Password</label>
-                                        <div class="cols-sm-10">
-                                            <div class="input-group">
-                                                <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
-                                                <input type="password" class="form-control" name="password" id="password" placeholder="Enter your Password" />
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="confirm" class="cols-sm-2 control-label">Confirm Password</label>
-                                        <div class="cols-sm-10">
-                                            <div class="input-group">
-                                                <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
-                                                <input type="password" class="form-control" name="confirm" id="confirm" placeholder="Confirm your Password" />
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group ">
-                                        <button type="submit" class="btn btn-primary btn-lg btn-block login-button">Register</button>
-                                    </div>
-                                    <div class="login-register">
-                                        <a href="/user/login">Login</a>
-                                    </div>
-                                </form>
-                            </div>
-
+                        <div class="col-md-12">
+                           <input class="form-control" type="text" name="name" placeholder="First Name" id="username" required>
+                           <small></small>
                         </div>
-                    </div>
+                        <div class="col-md-12">
+                            <input class="form-control" type="text" name="name" placeholder="Last Name" id="username" required>
+                            <small></small>
+                         </div>
+                        <div class="col-md-12">
+                            <input class="form-control" type="email" name="email" placeholder="E-mail Address" required>
+                            <small></small>
+                        </div>
+
+                       <div class="col-md-12">
+                            <select class="form-select mt-3" required>
+                                  <option selected disabled value="">Gender</option>
+                                  <option value="jweb">Male</option>
+                                  <option value="sweb">Female</option>
+                                  <option value="pmanager">Other</option>
+                           </select>
+                           <small></small>
+                       </div>
+
+
+                       <div class="col-md-12">
+                          <input class="form-control" type="password" name="password" placeholder="Password" required>
+                          <small></small>
+                       </div>
+                        <div class="form-button mt-3">
+                            <button id="submit" type="submit" class="btn btn-primary" onsubmit="onSubmit(e)">Register</button>
+                        </div>
+                    </form>
                 </div>
+            </div>
+        </div>
+    </div>
 </div>
+<%- include('./layout/footer'); %>
+</body>
+</html>
+
