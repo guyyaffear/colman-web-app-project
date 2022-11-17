@@ -12,12 +12,11 @@ const  isAdmin = (req, res, next) => {
 
 const login = async (req, res) => {
     const { email, password } = req.body;
+    if(!email || !password){
+         return res.render("login.ejs",{});
+    }
     try {
-        if(!email || !password){
-            res.render("login.ejs",{});
-        }
         const user = await userHelper.login(email, password);
-        console.log("user",user)
         if (user) {
             req.session.username = email;
             req.session.isAdmin = user.isAdmin;
@@ -75,7 +74,7 @@ const getUser = async (req, res) => {
         const user = await userHelper.getUser(username);
         res.render("addUser", { user });
     } else {
-        res.redirect("/user/add-user");
+        res.redirect("/user/register");
     }
 }
 

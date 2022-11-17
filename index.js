@@ -25,7 +25,7 @@ app.use(function (req, res, next) {
     res.locals.username = req.session.username ? req.session.username : null;
     next();
 });
-
+app.use("/",require("./routes/login"))
 app.use("/home", require("./routes/home"));
 app.use("/user", require("./routes/login"));
 
