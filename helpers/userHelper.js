@@ -21,18 +21,12 @@ const registerUser = async (
     email,
     password,
     firstName,
-    lastName = "unkown",
+    lastName,
     gender,
-    age,
     isAdmin = false
 ) => {
-    if (parseInt(age) < 0)
-        throw {
-            code: 400,
-            message: "Couldn't register user. Please try again later",
-        };
-
-    if (!(await login(email, password))) {
+    const isAlreadyRegistered = await login(email, password);
+    if (!isAlreadyRegistered) {
         const hashedPass = await hashService.genHash(password);
         const newUser = new userModel({
             email,
@@ -40,7 +34,6 @@ const registerUser = async (
             firstName,
             lastName,
             gender,
-            age: parseInt(age),
             isAdmin,
         });
 

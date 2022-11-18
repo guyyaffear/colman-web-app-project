@@ -30,22 +30,21 @@ const login = async (req, res) => {
 }
 
 const register = async (req, res) => {
-    const { email, password, firstName, lastName, gender, age, isAdmin } =
-        req.body;
     try {
+        const { email, password, firstName, lastName, gender, isAdmin } =
+        req.body;
         const register = await userHelper.registerUser(
             email,
             password,
             firstName,
             lastName,
             gender,
-            age,
             isAdmin
         );
         if (register) {
             req.session.username = email;
             req.session.iaAdmin = register.isAdmin;
-            res.json({ status: "success", code: 200, register });
+            res.render("dashboard");
         } else {
             throw Error();
         }

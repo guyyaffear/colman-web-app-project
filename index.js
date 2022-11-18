@@ -25,17 +25,14 @@ app.use(function (req, res, next) {
     res.locals.username = req.session.username ? req.session.username : null;
     next();
 });
-app.use("/",require("./routes/login"))
 app.use("/home", require("./routes/home"));
 app.use("/user", require("./routes/login"));
 
-// app.get("/error", (req, res) => {
-//     res.render("errorPage");
-// });
+app.get("/", (req, res) => {
+    res.render("login");
+  });
 
-// app.use("*", (req, res) => {
-//   res.redirect("/error?code=404");
-// });
+
 
 const httpServer = require("http").createServer(app);
 const { Server } = require("socket.io");
