@@ -26,10 +26,10 @@ app.use(function (req, res, next) {
     next();
 });
 app.use("/home", require("./routes/home"));
-app.use("/user", require("./routes/login"));
+app.use("/user", require("./routes/login",{useName:null}));
 
 app.get("/", (req, res) => {
-    res.render("login");
+    res.render("login",{userName:null});
   });
 
 

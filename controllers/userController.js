@@ -11,22 +11,28 @@ const  isAdmin = (req, res, next) => {
 }
 
 const login = async (req, res) => {
+
     const { email, password } = req.body;
-    if(!email || !password){
-         return res.render("login.ejs",{});
+    if (!email || !password) {
+        return res.render("login",{ userName: null });
     }
     try {
         const user = await userHelper.login(email, password);
         if (user) {
             req.session.username = email;
             req.session.isAdmin = user.isAdmin;
-            res.json({ status: "success", code: 200, user });
-        } else {
+            res.render("dashboard",{userName: email});
+                } else {
             res.json({ status: "error", code: 401, message: "No User Found" });
         }
     } catch (error) {
         res.json({ status: "error", code: error.code, message: error.message });
     }
+}
+
+const registerDefaultGetReq = (req, res) => {
+    return res.render("register",{userName:null});
+    
 }
 
 const register = async (req, res) => {
@@ -44,7 +50,7 @@ const register = async (req, res) => {
         if (register) {
             req.session.username = email;
             req.session.iaAdmin = register.isAdmin;
-            res.render("dashboard");
+            res.render("dashboard",{userName:email});
         } else {
             throw Error();
         }
@@ -59,7 +65,7 @@ const register = async (req, res) => {
 
 const logout = async (req, res) => {
     req.session.destroy();
-    res.redirect("/");
+    res.redirect("/login",{userName:null});
 }
 
 const getUser = async (req, res) => {
@@ -68,7 +74,7 @@ const getUser = async (req, res) => {
         const user = await userHelper.getUser(username);
         res.render("addUser", { user });
     } else {
-        res.redirect("/user/register");
+        res.redirect("/user/register",{userName:null});
     }
 }
 
@@ -103,4 +109,5 @@ module.exports = {
     getUser,
     updateUser,
     logout,
+    registerDefaultGetReq
 };
