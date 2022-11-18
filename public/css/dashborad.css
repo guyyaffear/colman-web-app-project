@@ -1,8 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap');
 
 body {
+    background-image: none;
+    background-color: black;
     font-family: "Poppins", sans-serif;
-    color: white !important;
 }
 #footer {
     position: inherit !important;
@@ -86,7 +87,7 @@ a:hover {
     position: absolute;
     top: 15px;
     left: 20px;
-    color: #ffffff;
+    color:white;
     background-color: #fe302f;
     padding: 2px 8px;
     text-transform: uppercase;
