@@ -1,12 +1,12 @@
-const shoesService = require("../helpers/shoesHelper");
-const categoryService = require("../services/category");
+const shoesHelper = require("../helpers/shoesHelper");
+const companyService = require("../helpers/companyHelper");
 
 async function allShoesPage(req, res) {
-  const categories = await categoryService.getCategories();
+  const company = await companyService.getCompany();
 
-  if (categories) {
+  if (company) {
     res.render("shop", {
-      categories,
+      company,
       loggedIn: !!req.session.username,
       isAdmin: !!req.session.isAdmin,
     });
@@ -18,7 +18,7 @@ async function allShoesPage(req, res) {
 async function getShoesByCompany(req, res) {
   const { company } = req.params;
 
-  const items = await shoesService.getShoesByCategory(category);
+  const items = await shoesHelper.getShoesByCompany(company);
   if (items) {
     res.json({
       status: "success",
@@ -38,11 +38,11 @@ async function getShoesByCompany(req, res) {
 
 async function addShoes(req, res) {
   try {
-    const item = await productService.addShoes(req.body);
+    const item = await shoesHelper.addShoes(req.body);
     if (item) {
       res.json({
         status: "success",
-        message: "product added successfully",
+        message: "shoes added successfully",
         code: 200,
         item,
       });
@@ -54,39 +54,39 @@ async function addShoes(req, res) {
   }
 }
 
-async function getProductById(req, res) {
+async function getShoesById(req, res) {
   const { id } = req.params;
 
   if (id === "new") {
-    res.render("addProduct", {
+    res.render("addShoes", {
       item: null,
-      categories: await categoryService.getCategories(),
+      Company: await companyService.getCompany(),
     });
   } else {
     try {
-      const item = await productService.getProductById(id);
+      const item = await shoesHelper.getProductById(id);
       if (item) {
-        res.render("addProduct", {
+        res.render("addShoes", {
           item,
-          categories: await categoryService.getCategories(),
+          company: await companyService.getCompany(),
         });
       } else {
         throw new Error();
       }
     } catch (error) {
-      res.redirect("/product/add/new");
+      res.redirect("/shoes/add/new");
     }
   }
 }
 
-async function updateProduct(req, res) {
-  const { productId } = req.params;
+async function updateShoes(req, res) {
+  const { shoesId } = req.params;
   const { title, category, price, image } = req.body;
 
-  console.log({ productId, title, category, price, image });
+  console.log({ shoesId, title, category, price, image });
   try {
-    const item = await productService.updateProduct({
-      productId,
+    const item = await shoesHelper.updateProduct({
+      shoesId,
       title,
       category,
       price,
@@ -96,7 +96,7 @@ async function updateProduct(req, res) {
       res.json({
         status: "success",
         code: 200,
-        message: "Product updated successfully",
+        message: "Shoes updated successfully",
         item,
       });
     } else {
@@ -112,11 +112,11 @@ async function updateProduct(req, res) {
 }
 
 async function removeShoes(req, res) {
-  const productId = req.params.productId;
+  const shoesId = req.params.shoesId;
 
   try {
-    if (!productId) throw new Error();
-    const remove = await productService.removeProduct(productId);
+    if (!shoesId) throw new Error();
+    const remove = await shoesHelper.removeProduct(shoesId);
 
     if (remove) {
       return res.json({
@@ -136,11 +136,11 @@ async function removeShoes(req, res) {
   }
 }
 
-module.exports = {
-  getProductsByCategory,
-  addProduct,
-  getProductById,
-  updateProduct,
-  removeProduct,
-  allProductsPage,
-};
+module.exports = {  
+  allShoesPage,
+  getShoesByCompany,
+  addShoes,
+  getShoesById,
+  updateShoes,
+  removeShoes,
+}

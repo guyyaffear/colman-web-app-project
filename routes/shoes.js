@@ -11,8 +11,8 @@ router.get("/:company", shoesController.getShoesByCompany);
 
 router.post("/add", isAdmin, shoesController.addShoes);
 
-router.put("/update/:productId", isAdmin, shoesController.updateShoes);
+router.put("/update/:shoesId", isAdmin, shoesController.updateShoes);
 
-router.delete("/remove/:productId", isAdmin, shoesController.removeShoes);
+router.delete("/remove/:shoesId", isAdmin, shoesController.removeShoes);
 
 module.exports = router;

@@ -40,10 +40,10 @@ async function getShoesById(id) {
   return await shoesModel.findById(ObjectId(id));
 }
 
-async function updateProduct({ productId, title, category, price, image }) {
+async function updateProduct({ shoesId, name, company, size, price,quantity, photo}) {
   try {
     const item = await shoesModel.findOneAndUpdate(
-      { _id: ObjectId(productId) },
+      { _id: ObjectId(shoesId) },
       {
         $set: {
           title: title.toLowerCase(),
@@ -64,10 +64,10 @@ async function updateProduct({ productId, title, category, price, image }) {
   }
 }
 
-async function removeProduct(productId) {
+async function removeShoes(shoesId) {
   try {
     const remove = await shoesModel.findOneAndDelete({
-      _id: ObjectId(productId),
+      _id: ObjectId(shoesId),
     });
 
     return remove;
@@ -81,5 +81,5 @@ module.exports = {
   addShoes,
   getShoesById,
   updateProduct,
-  removeProduct,
+  removeShoes,
 };
