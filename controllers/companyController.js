@@ -1,21 +1,21 @@
-const Category = require("../models/category");
+const Company = require("../models/company");
 const { errorHandler } = require("../helpers/dbErrorHandler");
 
-exports.categoryById = (req, res, next, id) => {
-    Category.findById(id).exec((err, category) => {
-        if (err || !category) {
+exports.companyById = (req, res, next, id) => {
+    Company.findById(id).exec((err, company) => {
+        if (err || !company) {
             return res.status(400).json({
-                error: "Category does not exist"
+                error: "Company does not exist"
             });
         }
-        req.category = category;
+        req.company = company;
         next();
     });
 };
 
 exports.create = (req, res) => {
-    const category = new Category(req.body);
-    category.save((err, data) => {
+    const company = new Company(req.body);
+    company.save((err, data) => {
         if (err) {
             return res.status(400).json({
                 error: errorHandler(err)
@@ -31,9 +31,9 @@ exports.read = (req, res) => {
 
 
 exports.update = (req, res) => {
-    const category = req.category;
-    category.name = req.body.name;
-    category.save((err, data) => {
+    const company = req.company;
+    company.name = req.body.name;
+    company.save((err, data) => {
         if (err) {
             return res.status(400).json({
                 error: errorHandler(err)
@@ -44,8 +44,8 @@ exports.update = (req, res) => {
 };
 
 exports.remove = (req, res) => {
-    const category = req.category;
-    category.remove((err, data) => {
+    const company = req.category;
+    company.remove((err, data) => {
         if (err) {
             return res.status(400).json({
                 error: errorHandler(err)
@@ -58,7 +58,7 @@ exports.remove = (req, res) => {
 };
 
 exports.list = (req, res) => {
-    Category.find().exec((err, data) => {
+    Company.find().exec((err, data) => {
         if (err) {
             return res.status(400).json({
                 error: errorHandler(err)

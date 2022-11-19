@@ -11,6 +11,19 @@
 </head>
 <%- include('./layout/header') %>
 <body>
+        	<!----Weather Widget-->
+		<a class="weatherwidget-io" href="https://forecast7.com/en/31d9734d79/rishon-letsiyon/" data-label_1="Tel Aviv" data-label_2="WEATHER" data-theme="original" >RISHON LETSIYON WEATHER</a>
+		<script>
+		!function(d,s,id){
+			var js,fjs=d.getElementsByTagName(s)[0];
+			if(!d.getElementById(id)){
+				js=d.createElement(s);
+				js.id=id;js.src='https://weatherwidget.io/js/widget.min.js';
+				fjs.parentNode.insertBefore(js,fjs);
+				}
+			}
+			(document,'script','weatherwidget-io-js');
+		</script>
     <div class="form-body">
         <div class="lines">
             <div class="line"></div>
@@ -46,7 +59,7 @@
                             <div class="row">
                                     <!-- Single Product -->
                                     <div class="col-md-6 col-lg-4 col-xl-3">
-                                            <div id="product-<%= shoes[0].name %>" class="single-product">
+                                            <div id="product-1" class="single-product">
                                                     <div class="part-1">
                                                             <ul>
                                                                     <li><a href="#"><i class="fas fa-shopping-cart"></i></a></li>
