@@ -28,7 +28,6 @@ const login = async (req, res) => {
                 } else {
                     res.render("/errorPage",{userName: email,errorMessage: user.message})        }
     } catch (error) {
-        console.log("error",error)
         res.render("errorPage",{userName:email || null,errorMessage: error.message})
     }
 }

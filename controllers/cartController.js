@@ -22,17 +22,17 @@ async function clearCart(req, res) {
 
 async function addShoeToCart(req, res) {
   try {
-    const product = await cartHelper.addShoeToCart(
+    const shoesAdded = await cartHelper.addShoeToCart(
       req.session.username,
       req.body
     );
-    if (product) {
-      res.json({ status: "success", code: 200, product });
+    if (shoesAdded) {
+      res.json({ status: "success", code: 200, shoesAdded });
     } else {
       res.json({
         status: "error",
         code: 400,
-        error: "Couldn't add product to cart",
+        error: "Couldn't add shoe to cart",
       });
     }
   } catch (err) {
@@ -43,7 +43,7 @@ async function addShoeToCart(req, res) {
 async function removeShoeFromCart(req, res) {
   try {
     const cart = await cartHelper.removeShoeFromCart(
-      req.session.username,
+      req.session.email,
       req.body
     );
 
@@ -53,7 +53,7 @@ async function removeShoeFromCart(req, res) {
       res.json({
         status: "error",
         code: 400,
-        error: "Couldn't remove product from cart",
+        error: "Couldn't remove shoe from cart",
       });
     }
   } catch (err) {
@@ -62,12 +62,12 @@ async function removeShoeFromCart(req, res) {
 }
 
 async function updateShoeQuantity(req, res) {
-  const { productId, quantity } = req.body;
+  const { shoeId, quantity } = req.body;
   const user = req.session.username || "ido@gmail.com";
   try {
     const update = await cartHelper.updateShoeQuantity(
       user,
-      productId,
+      shoeId,
       quantity
     );
 
@@ -80,7 +80,7 @@ async function updateShoeQuantity(req, res) {
     res.json({
       status: "error",
       code: 400,
-      error: "Couldn't update product quantity",
+      error: "Couldn't update shoe quantity",
     });
   }
 }
