@@ -1,5 +1,4 @@
 const shoesModel = require("../models/shoes");
-const { ObjectId } = require("mongodb");
 
 async function getShoesByCompany(category = "general") {
   const items = await shoesModel.find({ category: category.toLowerCase() });
@@ -8,13 +7,13 @@ async function getShoesByCompany(category = "general") {
 async function getAllShoes() {
   return await shoesModel.find({}).sort({ title: -1 })
 }
-async function addShoes({ name, company, size, price,quantity, photo = "" }) {
+async function addShoes({ name, company, size,price,quantity, photo}) {
   if (!name || !price || !company || !size || !quantity) 
     throw { code: 400, message: "Shoes Must have title and price" };
 
   const item = await shoesModel.findOne({
-    name: name.toLowerCase(),
-    company: company.toLowerCase(),
+    name: name,
+    company: company,
   });
 
   if (parseFloat(price) <= 0) {
@@ -23,12 +22,12 @@ async function addShoes({ name, company, size, price,quantity, photo = "" }) {
   if (!item) {
     try {
       return new shoesModel({
-        name: company.toLowerCase(),
-        company: company.toLowerCase(),
-        price: parseFloat(price),
+        name: name,
+        company: company,
         size:parseFloat(size),
+        price: parseFloat(price),
         quantity:parseInt(quantity),
-        image:photo,
+        photo: photo
       }).save();
     } catch (error) {
       return error;
@@ -68,10 +67,7 @@ async function updateProduct({ shoesId, name, company, size, price,quantity, pho
 
 async function removeShoes(shoesId) {
   try {
-    const remove = await shoesModel.findOneAndDelete({
-      _id: ObjectId(shoesId),
-    });
-
+    const remove = await shoesModel.findByIdAndRemove(shoesId);
     return remove;
   } catch (error) {
     throw new Error();

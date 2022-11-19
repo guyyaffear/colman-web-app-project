@@ -1,6 +1,4 @@
-const mongoose = require("mongoose");
-const { ObjectId } = mongoose.Schema;
-//// name ,color, type,availability, size, 
+const mongoose = require("mongoose"); 
 const shoesSchema = new mongoose.Schema(
     {
         name: {
@@ -16,27 +14,29 @@ const shoesSchema = new mongoose.Schema(
             maxlength: 32
         },
         company: {
-            type: ObjectId,
+            type: String,
             ref: "Company",
             required: true
         },
         size:{
-            type: Number
+            type: Number,
+            required: true
         },
         quantity: {
-            type: Number
+            type: Number,
+            required: true
         },
         sold: {
             type: Number,
             default: 0
         },
         photo: {
-            data: Buffer,
-            contentType: String
+            type: String,
         },
         shipping: {
+            type: Boolean,
             required: false,
-            type: Boolean
+            default: false
         }
     },
     { timestamps: true }

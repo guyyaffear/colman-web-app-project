@@ -37,10 +37,10 @@
                 <div class="form-items">
                     <h3>Add new shoes panel</h3>
                     <p>Fill the required data below.</p>
-                    <form  id="form" method="post" action="/user/register">
+                    <form  id="form" method="post" action="/shoes/add">
 
                         <div class="col-md-12">
-                            <input class="form-control" type="text" name="Name" placeholder="Shoe name" id="name" required>
+                            <input class="form-control" type="text" name="name" placeholder="Shoe name" id="name" required>
                             <small></small>
                         </div>
                         <div class="col-md-12">
@@ -48,7 +48,7 @@
                             <small></small>
                         </div>
                         <div class="col-md-12">
-                            <select class="form-select mt-3" required>
+                            <select class="form-select mt-3" required name="size">
                                 <option selected disabled value="">Size</option>
                                 <option value="40">40</option>
                                 <option value="41">41</option>
