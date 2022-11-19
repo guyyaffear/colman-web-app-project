@@ -28,6 +28,7 @@ app.use(function (req, res, next) {
 app.use("/user", require("./routes/login",{useName:null}));
 app.use("/shoes", require("./routes/shoes"));
 app.use("/cart", require("./routes/cart"));
+app.use("/dashboard", require("./routes/dashboard"));
 
 app.get("/", (req, res) => {
     res.render("login",{userName:null});

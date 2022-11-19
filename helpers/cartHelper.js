@@ -8,7 +8,7 @@ async function getCart(email) {
   console.log("useCart",userCart)
   if(userCart){
     return userCart.shoes.map((item) => ({
-      product: item.productId,
+      shoes: item.productId,
       quantity: item.quantity,
     }))
   } else {
