@@ -5,11 +5,13 @@ function isLoggedIn(req, res, next) {
 }
 
 const  isAdmin = (req, res, next) => {
-    req.session.email && req.session.isAdmin
-        ? next()
-        : res.redirect("/error?code=403");
-}
-
+    const useName = req.req.session.email || null;
+    if(req.session.email && req.session.isAdmin){
+        next()
+    } else{
+        res.redirect("/errorPage?code=403",useName);
+    }
+    }
 const login = async (req, res) => {
 
     const { email, password } = req.body;
@@ -23,10 +25,10 @@ const login = async (req, res) => {
             req.session.isAdmin = user.isAdmin;
             res.render("dashboard",{userName: email});
                 } else {
-            res.json({ status: "error", code: 401, message: "No User Found" });
-        }
+                    res.render("/errorPage",{userName: email,errorMessage: user.message})        }
     } catch (error) {
-        res.json({ status: "error", code: error.code, message: error.message });
+        console.log("error",error)
+        res.render("errorPage",{userName:email || null,errorMessage: error.message})
     }
 }
 
@@ -94,11 +96,8 @@ const updateUser = async (req, res) => {
             res.json({ status: "success", code: 200, user });
         }
     }
-    res.json({
-        status: "error",
-        code: 400,
-        message: "Couldn't update user info",
-    });
+    res.redirect("/errorPage?code=400")
+
 }
 
 module.exports = {

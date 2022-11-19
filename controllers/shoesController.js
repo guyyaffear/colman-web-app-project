@@ -9,7 +9,8 @@ async function allShoesPage(req, res) {
       shoes:allShoes
     });
   } else {
-    res.redirect("/error?code=400");
+    const userName = req.session.email || null;
+    res.redirect( 'error',"/errorPage?code=400",userName);
   }
 }
 

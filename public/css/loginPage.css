@@ -2,6 +2,10 @@ h1 {
     color: red;
     text-align: center;
 }
+#errorCode {
+    color: red;
+    text-align: center;
+}
 form{
     width: fit-content;
 }
