@@ -51,7 +51,7 @@ io.on("connection", (socket) => {
 
 httpServer.listen(PORT, async () => {
     console.log(`server running on port:${PORT}`);
-    mongoose.connect('mongodb://localhost:27017', {useNewUrlParser: true})
+    mongoose.connect('mongodb://127.0.0.1:27017', {useNewUrlParser: true})
         .then(() => {
             console.log("connected to db using mongoose");
         })
