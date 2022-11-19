@@ -3,9 +3,10 @@ const companyService = require("../helpers/companyHelper");
 
 async function allShoesPage(req, res) {
   const company = await companyService.getCompany();
-
+  
   if (company) {
     res.render("shop", {
+      userName:"Mosh",
       company,
       loggedIn: !!req.session.username,
       isAdmin: !!req.session.isAdmin,

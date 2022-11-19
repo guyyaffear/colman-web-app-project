@@ -2,34 +2,34 @@ const companyModel = require("../models/company");
 const { ObjectId } = require("mongodb");
 const shoesModel = require("../models/shoes");
 
-async function getCompany(title) {
-  return title
-    ? await companyModel.findOne({ title: title.toLowerCase() })
+async function getCompany(companyName) {
+  return companyName
+    ? await companyModel.findOne({ name: companyName.toLowerCase() })
     : await companyModel.find({}).sort({ title: -1 });
 }
 
-async function addCompany({ title }) {
-  if (!title) return false;
-  if (await companyModel.findOne({ title: title.toLowerCase() })) return false;
+async function addCompany({ companyName }) {
+  if (!companyName) return false;
+  if (await companyModel.findOne({ name: companyName.toLowerCase() })) return false;
   try {
-    return await new companyModel({ title: title.toLowerCase() }).save();
+    return await new companyModel({ name: companyName.toLowerCase() }).save();
   } catch (error) {
     return error;
   }
 }
 
-async function removeCompany({ company }) {
+async function removeCompany({ companyName }) {
   try {
-    if (!company)
+    if (!companyName)
       throw { status: "error", code: 400, message: "id is required" };
     const companyItem = await companyModel.findOne({
-      _id: ObjectId(company),
+      _id: ObjectId(companyName),
     });
     if (!companyItem || companyItem.name === "general")
       throw { status: "error", code: 400, message: "company not found" };
 
     await shoesModel.updateMany(
-      { company: companyItem.title },
+      { company: companyItem.name },
       { $set: { company: "general" } }
     );
     return await companyItem.delete();
@@ -39,14 +39,14 @@ async function removeCompany({ company }) {
   }
 }
 
-async function updateCompany(id, { title }) {
-  if (!title) return false;
-  if (!id) return await addCompany({ title });
+async function updateCompany(id, { companyName }) {
+  if (!companyName) return false;
+  if (!id) return await addCompany({ companyName });
 
   try {
     return await companyModel.findOneAndUpdate(
       { _id: ObjectId(id) },
-      { title: title.toLowerCase() },
+      { name: companyName.toLowerCase() },
       { new: true }
     );
   } catch (error) {
