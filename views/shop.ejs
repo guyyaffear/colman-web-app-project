@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <%- include('./layout/head')%>
+        <link rel="stylesheet" href="../public/css/shop.css" />
+        <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css'>
+        <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css'>
+</head>
+<%- include('./layout/header') %>
+<body>
+        <div class="form-body">
+                <section class="section-shoes">
+                        <div class="container">
+                                <div class="row justify-content-center text-center">
+                                        <div class="col-md-8 col-lg-6">
+                                                <div class="header">
+                                                        <h3>Featured Product</h3>
+                                                        <h2>Popular Products</h2>
+                                                </div>
+                                        </div>
+                                </div>
+                                <div class="row">
+                                        <% for(var i = 0; i < shoes.length; i++) { if(shoes[i].quantity > 0) {%>
+                                        <!-- Single Product -->
+                                        <div class="col-md-6 col-lg-4 col-xl-3">
+                                                <div id="shoe-<%= i+1 %>" class="single-shoe">                                                        
+                                                        <div class="part-1" style="background:url(<%=shoes[i].photo%>) no-repeat center; background-size:cover">
+                                                                <ul>                                                                        
+                                                                        <li><a href="<%= i + 1 %>"><i class="fas fa-shopping-cart"></i></a></li>
+                                                                        <li><a href="<%= i + 1 %>"><i class="fas fa-heart"></i></a></li>
+                                                                        <li><a href="<%= i + 1 %>"><i class="fas fa-plus"></i></a></li>
+                                                                        <li><a href="<%= i + 1 %>"><i class="fas fa-expand"></i></a></li>
+                                                                </ul>
+                                                        </div>
+                                                        <div class="part-2">
+                                                                <h3 class="shoe-title"><%=shoes[i].name %></h3>
+                                                                <h4 class="shoe-old-price">$<%=shoes[i].price * 1.5 %></h4>
+                                                                <h4 class="shoe-price">$<%=shoes[i].price %></h4>
+                                                        </div>
+                                                </div>
+                                        </div>
+                                        <% } } %>
+                                        <!-- Single Product -->
+                                </div>
+                        </div>
+                </section>
+        </div>                
+</body>
+<%- include('./layout/footer'); %>
+<script src="../public/js/shop.js"></script>      
+</html>
