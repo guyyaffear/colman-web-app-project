@@ -5,13 +5,15 @@ async function getCart(email) {
   const userCart = await cartModel
     .findOne({ email })
     .populate("shoes.shoesId");
-
-  return userCart.shoes.length
-    ? userCart.shoes.map((item) => ({
-        product: item.productId,
-        quantity: item.quantity,
-      }))
-    : [];
+  console.log("useCart",userCart)
+  if(userCart){
+    return userCart.shoes.map((item) => ({
+      product: item.productId,
+      quantity: item.quantity,
+    }))
+  } else {
+    return []
+  }
 }
 
 async function clearCart(email) {

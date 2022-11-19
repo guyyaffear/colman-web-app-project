@@ -1,7 +1,8 @@
 const userHelper = require("../helpers/userHelper");
 
 function isLoggedIn(req, res, next) {
-    req.session.email ? next() : res.redirect("/error?code=401");
+    req.session.email ? next() :
+     res.render("errorPage", {userName:null,errorMessage:"User not logged in"});
 }
 
 const  isAdmin = (req, res, next) => {

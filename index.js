@@ -28,10 +28,10 @@ app.use(function (req, res, next) {
 app.use("/user", require("./routes/login",{useName:null}));
 app.use("/shoes", require("./routes/shoes"));
 app.use("/cart", require("./routes/cart"));
-app.get("/error", (req, res) => {
-    const userName = req.session.email || null;
-    res.render("errorPage",userName);
-  });
+// app.get("/error", (req, res) => {
+//     const userName = req.session.email || null;
+//     res.render("errorPage",userName);
+//   });
 app.get("/", (req, res) => {
     res.render("login",{userName:null});
   });

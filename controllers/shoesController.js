@@ -3,6 +3,7 @@ const companyHelper = require("../helpers/companyHelper");
 const userHelper = require("../helpers/userHelper");
 async function allShoesPage(req, res) {
   const allShoes = await shoesHelper.getAllShoes();
+  console.log("allShoes",allShoes);
   if (allShoes) {
     res.render("shop", {
       userName: req.session.email,

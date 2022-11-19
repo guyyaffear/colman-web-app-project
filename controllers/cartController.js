@@ -1,8 +1,9 @@
 const cartHelper = require("../helpers/cartHelper");
 
 async function getCart(req, res) {
-  const items = await cartHelper.getCart(req.session.username);
+  const items = await cartHelper.getCart(req.session.email);
   res.render("cart", {
+    userName:req.session.email,
     items,
   });
 }
