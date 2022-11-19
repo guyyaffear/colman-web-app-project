@@ -22,7 +22,7 @@ const sessionMiddleware = session({
 app.use(sessionMiddleware);
 
 app.use(function (req, res, next) {
-    res.locals.username = req.session.username ? req.session.username : null;
+    res.locals.email = req.session.email ? req.session.email : null;
     next();
 });
 app.use("/user", require("./routes/login",{useName:null}));

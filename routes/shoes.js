@@ -1,13 +1,13 @@
 const express = require("express");
 const router = express.Router();
-const { isAdmin } = require("../controllers/userController");
+const { isAdmin, isLoggedIn } = require("../controllers/userController");
 const shoesController = require("../controllers/shoesController");
 
-router.get("/shop", shoesController.allShoesPage);
+router.get("/shop", isLoggedIn, shoesController.allShoesPage);
 
 router.get("/add/:id", isAdmin, shoesController.getShoesById);
 
-router.get("/:company", shoesController.getShoesByCompany);
+router.get("/:company", isLoggedIn,shoesController.getShoesByCompany);
 
 router.post("/add", isAdmin, shoesController.addShoes);
 

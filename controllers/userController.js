@@ -1,11 +1,11 @@
 const userHelper = require("../helpers/userHelper");
 
 function isLoggedIn(req, res, next) {
-    req.session.username ? next() : res.redirect("/error?code=401");
+    req.session.email ? next() : res.redirect("/error?code=401");
 }
 
 const  isAdmin = (req, res, next) => {
-    req.session.username && req.session.isAdmin
+    req.session.email && req.session.isAdmin
         ? next()
         : res.redirect("/error?code=403");
 }
@@ -19,7 +19,7 @@ const login = async (req, res) => {
     try {
         const user = await userHelper.login(email, password);
         if (user) {
-            req.session.username = email;
+            req.session.email = email;
             req.session.isAdmin = user.isAdmin;
             res.render("dashboard",{userName: email});
                 } else {
@@ -48,7 +48,7 @@ const register = async (req, res) => {
             isAdmin
         );
         if (register) {
-            req.session.username = email;
+            req.session.email = email;
             req.session.iaAdmin = register.isAdmin;
             res.render("dashboard",{userName:email});
         } else {
@@ -69,21 +69,21 @@ const logout = async (req, res) => {
 }
 
 const getUser = async (req, res) => {
-    const username = req.session.username;
-    if (username) {
-        const user = await userHelper.getUser(username);
+    const email = req.session.email;
+    if (email) {
+        const user = await userHelper.getUser(email);
         res.render("addUser", { user });
     } else {
-        res.redirect("/user/register",{userName:null});
+        res.redirect("/user/register",{email:null});
     }
 }
 
 const updateUser = async (req, res) => {
-    const username = req.session.username;
+    const email = req.session.email;
     const { password, firstName, lastName, gender, age } = req.body;
-    if (username) {
+    if (email) {
         const user = await userHelper.updateUser(
-            username,
+            email,
             password,
             firstName,
             lastName,

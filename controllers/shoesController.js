@@ -2,11 +2,10 @@ const shoesHelper = require("../helpers/shoesHelper");
 const companyHelper = require("../helpers/companyHelper");
 const userHelper = require("../helpers/userHelper");
 async function allShoesPage(req, res) {
-  const userName = await userHelper.getUser(req.query.email);
   const allShoes = await shoesHelper.getAllShoes();
   if (allShoes) {
-    res.render("dashboard", {
-      userName:userName,
+    res.render("shop", {
+      userName: req.session.email,
       shoes:allShoes
     });
   } else {
@@ -23,7 +22,7 @@ async function getShoesByCompany(req, res) {
       status: "success",
       code: 200,
       items,
-      loggedIn: !!req.session.username,
+      loggedIn: !!req.session.email,
       isAdmin: !!req.session.isAdmin,
     });
   } else {
