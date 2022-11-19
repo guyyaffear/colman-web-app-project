@@ -40,12 +40,13 @@ async function addShoes(req, res) {
   try {
     const item = await shoesHelper.addShoes(req.body);
     if (item) {
-      res.json({
-        status: "success",
-        message: "shoes added successfully",
-        code: 200,
-        item,
-      });
+      res.redirect("/shoes/shop");
+      // res.json({
+      //   status: "success",
+      //   message: "shoes added successfully",
+      //   code: 200,
+      //   item,
+      // });
     } else {
       throw { code: 400, message: "Couldn't add product" };
     }
@@ -55,28 +56,26 @@ async function addShoes(req, res) {
 }
 
 async function getShoesById(req, res) {
-  const { id } = req.params;
 
-  if (id === "new") {
-    res.render("addShoes", {
-      item: null,
-      Company: await companyHelper.getCompany(),
-    });
-  } else {
-    try {
-      const item = await shoesHelper.getProductById(id);
-      if (item) {
-        res.render("addShoes", {
-          item,
-          company: await companyHelper.getCompany(),
-        });
-      } else {
-        throw new Error();
-      }
-    } catch (error) {
-      res.redirect("/shoes/add/new");
-    }
-  }
+  res.render("addShoe.ejs",{userName:req.session.email})
+  // const { id } = req.params;
+  // console.log(req.params);
+  // if (id === "new") {
+  //   res.render("addShoe",{userName: null});
+  // } else {
+  //   try {
+  //     const item = await shoesHelper.getProductById(id);
+  //     if (item) {
+  //       res.render("addShoe.ejs", {
+  //         userName: req.session.email
+  //       });
+  //     } else {
+  //       throw new Error();
+  //     }
+  //   } catch (error) {
+  //     res.redirect("/shoes/add/new");
+  //   }
+  //}
 }
 
 async function updateShoes(req, res) {
@@ -113,17 +112,19 @@ async function updateShoes(req, res) {
 
 async function removeShoes(req, res) {
   const shoesId = req.params.shoesId;
-
+  console.log("1>> ",req.params);
+  console.log("2>> ",req.params.shoesId);
   try {
     if (!shoesId) throw new Error();
-    const remove = await shoesHelper.removeProduct(shoesId);
+    const remove = await shoesHelper.removeShoes(shoesId);
 
     if (remove) {
-      return res.json({
-        status: "success",
-        code: 200,
-        message: "Product removed successfully",
-      });
+      return res.redirect("/shoes/shop");
+      // return res.json({
+      //   status: "success",
+      //   code: 200,
+      //   message: "Product removed successfully",
+      // });
     } else {
       throw new Error();
     }

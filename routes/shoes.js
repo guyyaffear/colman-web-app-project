@@ -3,16 +3,16 @@ const router = express.Router();
 const { isAdmin, isLoggedIn } = require("../controllers/userController");
 const shoesController = require("../controllers/shoesController");
 
-router.get("/shop", isLoggedIn, shoesController.allShoesPage);
+router.get("/shop",shoesController.allShoesPage);
 
-router.get("/add/:id", isAdmin, shoesController.getShoesById);
+router.get("/add", shoesController.getShoesById);
 
 router.get("/:company", isLoggedIn,shoesController.getShoesByCompany);
 
-router.post("/add", isAdmin, shoesController.addShoes);
+router.post("/add", shoesController.addShoes);
 
 router.put("/update/:shoesId", isAdmin, shoesController.updateShoes);
 
-router.delete("/remove/:shoesId", isAdmin, shoesController.removeShoes);
+router.get("/remove/:shoesId", shoesController.removeShoes);
 
 module.exports = router;
