@@ -1,0 +1,40 @@
+{
+    "name": "Nike SB",
+    "price": 123321,
+    "company": "nike",
+    "size": 45,
+    "quantity": 12,
+    "sold": 0,
+    "photo": "https://static.nike.com/a/images/t_prod_ss/w_960,c_limit,f_auto/dd34a7d2-5c36-4f6c-8e7a-dac2a6690a9e/ispa-link-light-iron-ore-and-smoke-grey-cn2269-002-release-date.jpg",
+    "shipping": false
+}
+{
+    "name": "Adidas moon",
+    "price": 123321,
+    "company": "adidas",
+    "size": 46,
+    "quantity": 12,
+    "sold": 0,
+    "photo": "https://i.ibb.co/L8Nrb7p/1.jpg",
+    "shipping": false
+},
+{
+    "name": "Secony m1",
+    "price": 123321,
+    "company": "secony",
+    "size": 45,
+    "quantity": 12,
+    "sold": 0,
+    "photo": "https://i.ibb.co/L8Nrb7p/1.jpg",
+    "shipping": false
+}
+{
+    "name": "Rebook m2",
+    "price": 123321,
+    "company": "rebook",
+    "size": 44,
+    "quantity": 12,
+    "sold": 0,
+    "photo": "https://i.ibb.co/cLnZjnS/2.jpg",
+    "shipping": false
+},

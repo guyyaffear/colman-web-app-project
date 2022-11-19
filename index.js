@@ -25,8 +25,8 @@ app.use(function (req, res, next) {
     res.locals.username = req.session.username ? req.session.username : null;
     next();
 });
-app.use("/home", require("./routes/home"));
 app.use("/user", require("./routes/login",{useName:null}));
+app.use("/shoes", require("./routes/shoes"));
 
 app.get("/", (req, res) => {
     res.render("login",{userName:null});

@@ -17,7 +17,7 @@ const shoesSchema = new mongoose.Schema(
         },
         company: {
             type: ObjectId,
-            ref: "Category",
+            ref: "Company",
             required: true
         },
         size:{

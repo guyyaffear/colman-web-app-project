@@ -3,7 +3,7 @@ const { errorHandler } = require("../helpers/dbErrorHandler");
 
 exports.orderById = (req, res, next, id) => {
   Order.findById(id)
-    .populate("products.product", "name price")
+    .populate("products.shoes", "name price")
     .exec((err, order) => {
       if (err || !order) {
         return res.status(400).json({

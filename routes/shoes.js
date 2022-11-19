@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const { isAdmin } = require("../controllers/user");
+const { isAdmin } = require("../controllers/userController");
 const shoesController = require("../controllers/shoesController");
 
 router.get("/shop", shoesController.allShoesPage);
