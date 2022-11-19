@@ -1,15 +1,13 @@
 const shoesHelper = require("../helpers/shoesHelper");
-const companyService = require("../helpers/companyHelper");
-
+const companyHelper = require("../helpers/companyHelper");
+const userHelper = require("../helpers/userHelper");
 async function allShoesPage(req, res) {
-  const company = await companyService.getCompany();
-  
-  if (company) {
-    res.render("shop", {
-      userName:"Mosh",
-      company,
-      loggedIn: !!req.session.username,
-      isAdmin: !!req.session.isAdmin,
+  const userName = await userHelper.getUser(req.query.email);
+  const allShoes = await shoesHelper.getAllShoes();
+  if (allShoes) {
+    res.render("dashboard", {
+      userName:userName,
+      shoes:allShoes
     });
   } else {
     res.redirect("/error?code=400");
@@ -61,7 +59,7 @@ async function getShoesById(req, res) {
   if (id === "new") {
     res.render("addShoes", {
       item: null,
-      Company: await companyService.getCompany(),
+      Company: await companyHelper.getCompany(),
     });
   } else {
     try {
@@ -69,7 +67,7 @@ async function getShoesById(req, res) {
       if (item) {
         res.render("addShoes", {
           item,
-          company: await companyService.getCompany(),
+          company: await companyHelper.getCompany(),
         });
       } else {
         throw new Error();

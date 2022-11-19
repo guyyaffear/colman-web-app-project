@@ -5,7 +5,9 @@ async function getShoesByCompany(category = "general") {
   const items = await shoesModel.find({ category: category.toLowerCase() });
   return items;
 }
-
+async function getAllShoes() {
+  return await shoesModel.find({}).sort({ title: -1 })
+}
 async function addShoes({ name, company, size, price,quantity, photo = "" }) {
   if (!name || !price || !company || !size || !quantity) 
     throw { code: 400, message: "Shoes Must have title and price" };
@@ -82,4 +84,5 @@ module.exports = {
   getShoesById,
   updateProduct,
   removeShoes,
+  getAllShoes,
 };
